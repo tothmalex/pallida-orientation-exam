@@ -19,7 +19,7 @@ public class MainController {
     @RequestMapping("/search")
     public String list( Model model, @RequestParam(required = false) String search) {
         if (search != null || search.matches("^.*[^a-zA-Z0-9 ].*$") || search.length() < 7) {
-            model.addAttribute("cars", carRepo.findAllByLicencePlateIsLike("%" + search + "%"));
+            model.addAttribute("cars", carRepo.findAllByPlateIsLike("%" + search + "%"));
         }
         else {
             model.addAttribute("errorMessage", "Sorry, the submitted licence plate is not valid");
@@ -29,19 +29,19 @@ public class MainController {
 
     @GetMapping("/police")
     public String policeCars( Model model) {
-        model.addAttribute("cars", carRepo.findAllByLicencePlateIsLike("%" + "RB" + "%"));
+        model.addAttribute("cars", carRepo.findAllByPlateIsLike("%" + "RB" + "%"));
         return "searchform";
     }
 
     @GetMapping("/diplomat")
     public String diplomatCars( Model model) {
-        model.addAttribute("cars", carRepo.findAllByLicencePlateIsLike("%" + "DT" + "%"));
+        model.addAttribute("cars", carRepo.findAllByPlateIsLike("%" + "DT" + "%"));
         return "searchform";
     }
 
     @GetMapping("search/{brand}")
     public String branding( Model model, @PathVariable String brand) {
-        model.addAttribute("cars", carRepo.findAllByBrandIsLike(brand));
+        model.addAttribute("cars", carRepo.findAllByCarBrandIsLike(brand));
         return "searchform";
     }
 }
