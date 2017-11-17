@@ -20,13 +20,12 @@ public class MainController {
     public String list( Model model, @RequestParam(required = false) String search) {
         if (search.matches("^.*[^a-zA-Z0-9 ].*$") || search.length() < 7) {
             model.addAttribute("cars", carRepo.findAllByPlateIsLike("%" + search + "%"));
-        }
-        else if (search == null) {
+        } else if (search == null) {
             model.addAttribute("cars", carRepo.findAll());
-        }
-        else {
+        } else {
             model.addAttribute("errorMessage", "Sorry, the submitted licence plate is not valid");
-            return "searchform";
+        }
+        return "searchform";
     }
 
     @GetMapping("/police")
