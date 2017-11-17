@@ -31,8 +31,7 @@ public class MainController {
     @GetMapping("/diplomat")
     public String addCar(Model model) {
         model.addAttribute("addtitle", new Car());
-       /* model.addAttribute("genres", Type.genres);
-        model.addAttribute("types", Type.types);*/
+       
         return "searchform";
     }
 
