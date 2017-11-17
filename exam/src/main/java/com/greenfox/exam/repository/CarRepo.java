@@ -9,5 +9,4 @@ public interface CarRepo extends CrudRepository<Car, Long> {
 
     List<Car> findAllByLicencePlateIsLike(String licencePlate);
     List<Car> findAllByBrandIsLike(String brand);
-
 }

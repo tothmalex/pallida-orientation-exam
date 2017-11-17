@@ -1,11 +1,11 @@
 package com.greenfox.exam.controller;
 
-import com.greenfox.exam.model.Car;
 import com.greenfox.exam.repository.CarRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -27,28 +27,21 @@ public class MainController {
         return "searchform";
     }
 
-    @GetMapping("/police")
-    public String policeCars( Model model, @RequestParam(required = false) String search) {
-        model.addAttribute("addtitle", new Car());
-
+    @GetMapping("/list/police")
+    public String policeCars( Model model) {
+        model.addAttribute("cars", carRepo.findAllByLicencePlateIsLike("%" + "RB" + "%"));
         return "searchform";
     }
 
-    @GetMapping("/diplomat")
-    public String diplomatCars( Model model, @RequestParam(required = false) String search) {
-        model.addAttribute("addtitle", new Car());
-
+    @GetMapping("/list/diplomat")
+    public String diplomatCars( Model model) {
+        model.addAttribute("cars", carRepo.findAllByLicencePlateIsLike("%" + "DT" + "%"));
         return "searchform";
     }
-/*
 
-    @PostMapping("/add")
-    public String postTitle(@ModelAttribute Moviez moviez, Model model, @RequestParam("duedate") String duedate) {
-        moviezRepo.save(moviez);
-        model.addAttribute("moviez", moviezRepo.findAll());
-        return "moviez";
+    @GetMapping("/{brand}")
+    public String branding( Model model, @PathVariable String brand) {
+        model.addAttribute("cars", carRepo.findAllByBrandIsLike(brand));
+        return "searchform";
     }
-*/
-
-
 }
