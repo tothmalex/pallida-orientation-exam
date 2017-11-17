@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class BrandController {
 
-    @PostMapping("/api/search/{brand}")
+    @GetMapping("/api/search/{brand}")
     @ResponseBody
     public ReturnMessage sendingMessage (@PathVariable String brand) {
 
