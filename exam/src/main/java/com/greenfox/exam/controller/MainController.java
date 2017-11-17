@@ -16,7 +16,7 @@ public class MainController {
     @Autowired
     CarRepo carRepo;
 
-    @RequestMapping("/search")
+    @RequestMapping({"","/search"})
     public String list( Model model, @RequestParam(required = false) String search) {
         if (search != null || search.matches("^.*[^a-zA-Z0-9 ].*$") || search.length() < 7) {
             model.addAttribute("cars", carRepo.findAllByPlateIsLike("%" + search + "%"));

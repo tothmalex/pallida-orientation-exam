@@ -12,7 +12,7 @@ public class BrandController {
     @ResponseBody
     public ReturnMessage sendingMessage (@PathVariable String brand) {
 
-        if (brand == "Audi") {
+        if (brand == "audi") {
             return new ReturnMessage(HttpStatus.OK, GroupOfCar.cars);
         }
         else {

@@ -1,9 +1,11 @@
 package com.greenfox.exam.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import org.springframework.http.HttpStatus;
 
 public class ReturnMessage {
     HttpStatus result;
+    @JsonInclude(value = JsonInclude.Include.NON_EMPTY)
     Iterable data;
 
     public ReturnMessage( HttpStatus result, Iterable data ) {
