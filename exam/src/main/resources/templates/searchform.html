@@ -13,6 +13,7 @@
         <input type="search" name="search" placeholder="Search"/>
         <button type="submit" value="Submit">Search</button>
     </form>
+    <p>th:if="${errorMessage}">Sorry, the submitted licence plate is not valid!</p>
 </div>
 <p></p>
 <a th:href="@{/list/police}" class="btn btn-xs btn-success" th:text="'Police Cars Only'" />
@@ -30,17 +31,13 @@
     </thead>
     <tr th:each="car:${cars}">
         <td th:text="${car.licencePlate}"></td>
-        <td><a th:href="@{'/{brand}'(id=${car.brand})}" th:text="${cars.brand}"></a>
+        <td><a th:href="@{'/{brand}'(brand=${car.brand})}" th:text="${cars.brand}"></a></td>
         <td th:text="${car.model}"></td>
         <td th:text="${car.color}"></td>
         <td th:text="${car.year}"></td>
     </tr>
 
 </table>
-<p></p>
-<a th:href="@{/list/police}" class="btn btn-xs btn-success" th:text="'Police Cars Only'" />
-<a th:href="@{/list/diplomat}" class="btn btn-xs btn-success" th:text="'Diplomats Only'" />
-<p></p>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>

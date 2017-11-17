@@ -18,11 +18,11 @@ public class MainController {
 
     @RequestMapping({"/", "/list"})
     public String list( Model model, @RequestParam(required = false) String search) {
-        if (search == null) {
-            model.addAttribute("cars", null);
+        if (search != null || StringUtils.isAlphanumeric(search)) {
+            model.addAttribute("cars", carRepo.findAllByLicencePlateIsLike("%" + search + "%"));
         }
         else {
-            model.addAttribute("cars", carRepo.findAllByLicencePlateIsLike("%" + search + "%"));
+            model.addAttribute("errorMessage", "Sorry, the submitted licence plate is not valid");
         }
         return "searchform";
     }
