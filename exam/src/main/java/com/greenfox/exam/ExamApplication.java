@@ -1,5 +1,6 @@
 package com.greenfox.exam;
 
+import com.greenfox.exam.model.GroupOfCar;
 import com.greenfox.exam.repository.CarRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -18,6 +19,7 @@ public class ExamApplication implements CommandLineRunner {
 
 	@Override
 	public void run( String... args ) throws Exception {
+		carRepo.save(GroupOfCar.cars);
 
 	}
 }
