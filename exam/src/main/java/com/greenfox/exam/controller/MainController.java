@@ -1,5 +1,6 @@
 package com.greenfox.exam.controller;
 
+import antlr.StringUtils;
 import com.greenfox.exam.repository.CarRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,7 +19,7 @@ public class MainController {
 
     @RequestMapping({"/", "/list"})
     public String list( Model model, @RequestParam(required = false) String search) {
-        if (search != null || StringUtils.isAlphanumeric(search)) {
+        if (search != null || search.matches("^.*[^a-zA-Z0-9 ].*$") || search.length() < 7) {
             model.addAttribute("cars", carRepo.findAllByLicencePlateIsLike("%" + search + "%"));
         }
         else {
