@@ -20,28 +20,31 @@
     </form>
 </div>
 <p></p>
+<input type="checkbox" th:text="'Police Cars Only'" th:field="*{}" />
+<p></p>
+<p></p>
+<input type="checkbox" th:text="'    Did you watch it?'" th:field="*{watched}" />
+<p></p>
+
+
+<p></p>
 <h1>The GreenFox Licence Database</h1>
 <table class="table table-striped">
+    <thead>
     <tr>
         <th>Licence Plate</th>
         <th>Brand</th>
         <th>Model</th>
         <th>Color</th>
         <th>Year</th>
-        <th>Edit</th>
-        <th>Delete</th>
     </tr>
+    </thead>
     <tr th:each="car:${cars}">
         <td th:text="${cars.licenceplate}"></td>
         <td><a th:href="@{'/{brand}'(id=${car.brand})}" th:text="${cars.brand}"></a>
         <td th:text="${car.model}"></td>
         <td th:text="${car.color}"></td>
         <td th:text="${car.year}"></td>
-       <!-- <td th:if="${movie.isWatched()}">Yes</td>
-        <td th:unless="${movie.isWatched()}">No</td>
-        <td th:text="${movie.duedate}"></td>-->
-        <td><a th:href="@{/list/{id}/edit(id=${movie.id})}" class="btn btn-xs btn-info" >Edit</a></td>
-        <td><a th:href="@{/moviez/{id}/delete(id=${movie.id})}" class="btn btn-xs btn-danger" >Delete</a></td>
     </tr>
 </table>
 <p></p>

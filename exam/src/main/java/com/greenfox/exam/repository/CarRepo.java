@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface CarRepo extends CrudRepository<Car, Long> {
 
-    List<Car> findAllByTitleIsLikeOrGenreIsLikeOrTypeIsLike( String title, String genre, String type);
     List<Car> findAllByLicencePlateIsLike(String licencePlate);
-    List<Car> findAllByUsersId(long id);
+    List<Car> findAllByBrandIsLike(String brand);
+
 }

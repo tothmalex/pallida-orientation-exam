@@ -24,22 +24,20 @@ public class MainController {
         else {
             model.addAttribute("cars", carRepo.findAllByLicencePlateIsLike("%" + search + "%"));
         }
+        return "searchform";
+    }
+
+    @GetMapping("/police")
+    public String policeCars( Model model, @RequestParam(required = false) String search) {
+        model.addAttribute("addtitle", new Car());
 
         return "searchform";
     }
 
     @GetMapping("/diplomat")
-    public String addCar(Model model) {
+    public String diplomatCars( Model model, @RequestParam(required = false) String search) {
         model.addAttribute("addtitle", new Car());
-       
-        return "searchform";
-    }
 
-    @GetMapping("/police")
-    public String addTitle(Model model) {
-        model.addAttribute("addtitle", new Moviez());
-        model.addAttribute("genres", Type.genres);
-        model.addAttribute("types", Type.types);
         return "searchform";
     }
 /*
