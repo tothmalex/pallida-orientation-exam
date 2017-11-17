@@ -11,15 +11,15 @@
 <p></p>
 
 <div class="input-group col-md-12">
-    <form th:action="@{/list}" th:object="${search}" method="get">
+    <form th:action="@{/search}" th:object="${search}" method="get">
         <input type="search" name="search" placeholder="Search"/>
         <button type="submit" value="Submit">Search</button>
     </form>
     <p>th:if="${errorMessage}">Sorry, the submitted licence plate is not valid!</p>
 </div>
 <p></p>
-<a th:href="@{/list/police}" class="btn btn-xs btn-success" th:text="'Police Cars Only'" />
-<a th:href="@{/list/diplomat}" class="btn btn-xs btn-success" th:text="'Diplomats Only'" />
+<a th:href="@{/police}" class="btn btn-xs btn-success" th:text="'Police Cars Only'" />
+<a th:href="@{/diplomat}" class="btn btn-xs btn-success" th:text="'Diplomats Only'" />
 <p></p>
 <table class="table table-striped">
     <thead>
@@ -27,18 +27,17 @@
         <th>Licence Plate</th>
         <th>Brand</th>
         <th>Model</th>
-        <th>Color</th>
         <th>Year</th>
+        <th>Color</th>
     </tr>
     </thead>
     <tr th:each="car:${cars}">
-        <td th:text="${car.licencePlate}"></td>
-        <td><a th:href="@{'/{brand}'(brand=${car.brand})}" th:text="${cars.brand}"></a></td>
-        <td th:text="${car.model}"></td>
-        <td th:text="${car.color}"></td>
+        <td th:text="${car.plate}"></td>
+        <td><a th:href="@{'search/{brand}'(brand=${car.carBrand})}" th:text="${car.carBrand}"></a></td>
+        <td th:text="${car.carModel}"></td>
         <td th:text="${car.year}"></td>
+        <td th:text="${car.color}"></td>
     </tr>
-
 </table>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

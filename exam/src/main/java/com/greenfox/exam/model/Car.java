@@ -13,19 +13,11 @@ public class Car {
     @GeneratedValue(strategy = GenerationType.AUTO)
     long id;
 
-    String licencePlate;
-    String brand;
-    String model;
-    String color;
+    String plate;
+    String carBrand;
+    String carModel;
     int year;
-
-    public Car( String licencePlate, String brand, String model, String color, int year ) {
-        this.licencePlate = licencePlate;
-        this.brand = brand;
-        this.model = model;
-        this.color = color;
-        this.year = year;
-    }
+    String color;
 
     public long getId() {
         return id;
@@ -35,31 +27,36 @@ public class Car {
         this.id = id;
     }
 
-    public Car() {
+    public String getPlate() {
+        return plate;
     }
 
-    public String getLicencePlate() {
-        return licencePlate;
+    public void setPlate( String plate ) {
+        this.plate = plate;
     }
 
-    public void setLicencePlate( String licencePlate ) {
-        this.licencePlate = licencePlate;
+    public String getCarBrand() {
+        return carBrand;
     }
 
-    public String getBrand() {
-        return brand;
+    public void setCarBrand( String carBrand ) {
+        this.carBrand = carBrand;
     }
 
-    public void setBrand( String brand ) {
-        this.brand = brand;
+    public String getCarModel() {
+        return carModel;
     }
 
-    public String getModel() {
-        return model;
+    public void setCarModel( String carModel ) {
+        this.carModel = carModel;
     }
 
-    public void setModel( String model ) {
-        this.model = model;
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear( int year ) {
+        this.year = year;
     }
 
     public String getColor() {
@@ -70,11 +67,16 @@ public class Car {
         this.color = color;
     }
 
-    public int getYear() {
-        return year;
+    public Car() {
+
     }
 
-    public void setYear( int year ) {
+    public Car( String plate, String carBrand, String carModel, int year, String color ) {
+
+        this.plate = plate;
+        this.carBrand = carBrand;
+        this.carModel = carModel;
         this.year = year;
+        this.color = color;
     }
 }

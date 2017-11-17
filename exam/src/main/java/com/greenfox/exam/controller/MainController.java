@@ -1,6 +1,5 @@
 package com.greenfox.exam.controller;
 
-import antlr.StringUtils;
 import com.greenfox.exam.repository.CarRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,7 +16,7 @@ public class MainController {
     @Autowired
     CarRepo carRepo;
 
-    @RequestMapping({"/", "/list"})
+    @RequestMapping("/search")
     public String list( Model model, @RequestParam(required = false) String search) {
         if (search != null || search.matches("^.*[^a-zA-Z0-9 ].*$") || search.length() < 7) {
             model.addAttribute("cars", carRepo.findAllByLicencePlateIsLike("%" + search + "%"));
@@ -28,19 +27,19 @@ public class MainController {
         return "searchform";
     }
 
-    @GetMapping("/list/police")
+    @GetMapping("/police")
     public String policeCars( Model model) {
         model.addAttribute("cars", carRepo.findAllByLicencePlateIsLike("%" + "RB" + "%"));
         return "searchform";
     }
 
-    @GetMapping("/list/diplomat")
+    @GetMapping("/diplomat")
     public String diplomatCars( Model model) {
         model.addAttribute("cars", carRepo.findAllByLicencePlateIsLike("%" + "DT" + "%"));
         return "searchform";
     }
 
-    @GetMapping("/{brand}")
+    @GetMapping("search/{brand}")
     public String branding( Model model, @PathVariable String brand) {
         model.addAttribute("cars", carRepo.findAllByBrandIsLike(brand));
         return "searchform";
